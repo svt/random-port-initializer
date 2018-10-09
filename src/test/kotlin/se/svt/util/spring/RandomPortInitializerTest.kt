@@ -22,7 +22,6 @@ class RandomPortInitializerTest {
     @Value("\${random-port.port3}")
     var port3: Int = 0
 
-
     @Configuration
     open class MyTestConfiguration
 
@@ -37,5 +36,3 @@ class RandomPortInitializerTest {
                 .isNotEqualTo(port1)
     }
 }
-
-
