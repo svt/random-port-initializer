@@ -2,6 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.2.41"
     id 'org.jmailen.kotlinter' version '1.12.0'
     id 'pl.allegro.tech.build.axion-release' version '1.9.1'
+    id "com.jfrog.bintray" version "1.8.4"
 }
 
 group = 'se.svt.util.spring'
@@ -19,6 +20,34 @@ test {
     useJUnitPlatform()
 }
 
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['publishjob']
+    pkg {
+        repo = 'svtopensource'
+        name = 'random-port-initializer'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/SVT/random-port-initializer'
+        userOrg = 'svtfoss'
+
+        version {
+            name = '1.0.0-rc.1'
+            released = new Date()
+        }
+    }
+}
+
+publishing {
+    publications {
+        publishjob(MavenPublication) {
+            from components.java
+            groupId 'se.svt.util.spring'
+            artifactId 'random-port-initializer'
+            version  '1.0.0-rc.1'
+        }
+    }
+}
 compileKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
@@ -42,26 +71,6 @@ task sourceJar(type: Jar) {
 
 task testJar(type: Jar, dependsOn: testClasses) {
     from sourceSets.test.output
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-
-            artifact sourceJar {
-                classifier "sources"
-            }
-
-            artifact testJar {
-                classifier "test"
-            }
-
-            repositories {
-
-            }
-        }
-    }
 }
 
 publish.dependsOn check
