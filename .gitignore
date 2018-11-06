@@ -74,3 +74,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 random-port-initializer.iml
+
+*.un~
