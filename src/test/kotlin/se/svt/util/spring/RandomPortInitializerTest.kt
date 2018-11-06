@@ -22,12 +22,11 @@ class RandomPortInitializerTest {
     @Value("\${random-port.port3}")
     var port3: Int = 0
 
-
     @Configuration
     open class MyTestConfiguration
 
     @Test
-    fun `Random ports are assigned, same identifier gives same port` () {
+    fun `Random ports are assigned, same identifier gives same port`() {
         assertThat(port1).isGreaterThan(0)
 
         assertThat(port1).isEqualTo(port2)
@@ -37,5 +36,3 @@ class RandomPortInitializerTest {
                 .isNotEqualTo(port1)
     }
 }
-
-

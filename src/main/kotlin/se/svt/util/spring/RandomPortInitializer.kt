@@ -26,7 +26,7 @@ class RandomPortPropertySource(name: String) : PropertySource<Any>(name) {
     val ports = ConcurrentHashMap<String, Int>()
 
     override fun getProperty(name: String): Any? {
-        if ( ! this.isRandomPortProperty(name)) {
+        if (! this.isRandomPortProperty(name)) {
             return null
         }
         return ports.computeIfAbsent(name) { _ -> SocketUtils.findAvailableTcpPort() }

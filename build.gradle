@@ -1,11 +1,13 @@
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.2.41"
-    id 'org.jmailen.kotlinter' version '1.12.0'
-    id 'pl.allegro.tech.build.axion-release' version '1.9.1'
+    id "org.jetbrains.kotlin.jvm" version "1.3.0"
+    id 'org.jmailen.kotlinter' version '1.20.1'
+    id 'pl.allegro.tech.build.axion-release' version '1.9.3'
+    id "com.jfrog.bintray" version "1.8.4"
+    id "com.github.ben-manes.versions" version '0.20.0' 
 }
 
 group = 'se.svt.util.spring'
-version scmVersion.version
+project.version=scmVersion.version
 
 apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
@@ -19,6 +21,33 @@ test {
     useJUnitPlatform()
 }
 
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['publishjob']
+    pkg {
+        repo = 'opensource'
+        name = 'random-port-initializer'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/SVT/random-port-initializer'
+        userOrg = 'svt'
+
+        version {
+            name = scmVersion.version
+        }
+    }
+}
+
+publishing {
+    publications {
+        publishjob(MavenPublication) {
+            from components.java
+            groupId 'se.svt.util.spring'
+            artifactId 'random-port-initializer'
+            version  scmVersion.version
+        }
+    }
+}
 compileKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
@@ -44,40 +73,20 @@ task testJar(type: Jar, dependsOn: testClasses) {
     from sourceSets.test.output
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-
-            artifact sourceJar {
-                classifier "sources"
-            }
-
-            artifact testJar {
-                classifier "test"
-            }
-
-            repositories {
-
-            }
-        }
-    }
-}
-
 publish.dependsOn check
 
 dependencies {
-    api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41'
-    api 'org.jetbrains.kotlin:kotlin-reflect:1.2.41'
-    api 'org.springframework:spring-context:5.0.6.RELEASE'
+    api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.0'
+    api 'org.jetbrains.kotlin:kotlin-reflect:1.3.0'
+    api 'org.springframework:spring-context:5.1.2.RELEASE'
 
-    testImplementation 'org.assertj:assertj-core:3.10.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-    testImplementation 'org.springframework:spring-test:5.0.6.RELEASE'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testImplementation 'org.springframework:spring-test:5.1.2.RELEASE'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
 task wrapper(type: Wrapper) {
     distributionType = 'ALL'
-    gradleVersion = '4.7'
+    gradleVersion = '4.10.2'
 }
