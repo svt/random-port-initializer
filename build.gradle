@@ -43,7 +43,7 @@ publishing {
             from components.java
             groupId 'se.svt.util.spring'
             artifactId 'random-port-initializer'
-            version  '1.0.0-rc.1'
+            version  scmVersion.version
         }
     }
 }
