@@ -25,11 +25,11 @@ bintray {
     key = System.getenv('BINTRAY_KEY')
     publications = ['publishjob']
     pkg {
-        repo = 'svtopensource'
+        repo = 'opensource'
         name = 'random-port-initializer'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/SVT/random-port-initializer'
-        userOrg = 'svtfoss'
+        userOrg = 'svt'
 
         version {
             name = scmVersion.version
