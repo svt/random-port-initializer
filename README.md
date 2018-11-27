@@ -55,4 +55,8 @@ Copyright 2018 Sveriges Television AB
 
 This software is released under the Apache 2.0 License.
 
+## Primary Maintainers
+
+Gustav Grusell https://github.com/grusell
+
 ----
