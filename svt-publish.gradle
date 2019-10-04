@@ -1,0 +1,76 @@
+/*
+Usage:
+project name will be used as artifactId
+
+The following additional project properties need to be set, for instance in build.gradle:
+group = 'se.svt.oss.spring'
+description = 'A Spring test util for resolving property placeholders to free random ports'
+project.version=scmVersion.version
+ext.vcsUrl = 'https://github.com/SVT/random-port-initializer'
+ext.license = [:]
+ext.license.name = "The Apache Software License, Version 2.0"
+ext.license.shortName = "Apache-2.0"
+ext.license.url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+
+ */
+
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['publishjob']
+    pkg {
+        repo = 'opensource'
+        name = project.name
+        licenses = [project.ext.license.shortName]
+        vcsUrl = project.ext.vcsUrl
+        userOrg = 'svt'
+
+        version {
+            name = scmVersion.version
+        }
+    }
+}
+
+
+def pomConfig = {
+    licenses {
+        license {
+            name project.ext.license.name
+            url project.ext.license.url
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            name "svt open source"
+            organisation "SVT"
+            organisationUrl "https://www.svt.se/opensource/"
+            email "opensource@svt.se"
+        }
+    }
+
+    scm {
+        url project.ext.vcsUrl
+    }
+}
+
+publishing {
+    publications {
+        publishjob(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId project.group
+            artifactId project.name
+            version  project.version
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', project.description)
+                root.appendNode('name', project.name)
+                root.appendNode('url', project.ext.vcsUrl)
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}

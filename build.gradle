@@ -6,14 +6,19 @@ plugins {
     id "com.github.ben-manes.versions" version '0.20.0' 
 }
 
-group = 'se.svt.util.spring'
+group = 'se.svt.oss.spring'
+description = 'A Spring test util for resolving property placeholders to free random ports'
 project.version=scmVersion.version
+ext.vcsUrl = 'https://github.com/SVT/random-port-initializer'
+ext.license = [:]
+ext.license.name = "The Apache Software License, Version 2.0"
+ext.license.shortName = "Apache-2.0"
+ext.license.url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 
 apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 apply plugin: 'java-library'
-apply from: 'bintray.gradle'
-apply from: 'publishing.gradle'
+apply from: 'svt-publish.gradle'
 
 repositories {
     mavenCentral()
