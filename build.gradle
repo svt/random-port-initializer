@@ -6,7 +6,7 @@ plugins {
     id "com.github.ben-manes.versions" version '0.20.0' 
 }
 
-group = 'se.svt.oss.spring'
+group = 'se.svt.oss'
 description = 'A Spring test util for resolving property placeholders to free random ports'
 project.version=scmVersion.version
 ext.vcsUrl = 'https://github.com/SVT/random-port-initializer'

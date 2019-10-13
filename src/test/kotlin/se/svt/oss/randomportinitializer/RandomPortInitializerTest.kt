@@ -1,4 +1,4 @@
-package se.svt.util.spring
+package se.svt.oss.randomportinitializer
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

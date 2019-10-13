@@ -13,7 +13,7 @@ Spring 5
 
 Add to build.gradle
 ```
-testCompile 'se.svt.util.spring:random-port-initializer:X.Y.Z
+testCompile 'se.svt.oss:random-port-initializer:X.Y.Z
 ```
 
 When the RandomPortInitializer is applied to the application context, any property placeholders

@@ -1,4 +1,4 @@
-package se.svt.util.spring
+package se.svt.oss.randomportinitializer
 
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
