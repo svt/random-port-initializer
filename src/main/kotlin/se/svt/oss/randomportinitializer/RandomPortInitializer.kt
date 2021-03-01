@@ -12,8 +12,10 @@ class RandomPortInitializer : ApplicationContextInitializer<ConfigurableApplicat
     override fun initialize(applicationContext: ConfigurableApplicationContext) {
 
         applicationContext.environment.propertySources
-                .addAfter(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME,
-                        RandomPortPropertySource(RANDOM_PORTS_PROPERTY_SOURCE_NAME))
+            .addAfter(
+                StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME,
+                RandomPortPropertySource(RANDOM_PORTS_PROPERTY_SOURCE_NAME)
+            )
     }
 }
 
