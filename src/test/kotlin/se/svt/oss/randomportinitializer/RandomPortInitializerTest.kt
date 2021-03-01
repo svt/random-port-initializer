@@ -9,8 +9,10 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
-@ContextConfiguration(classes = arrayOf(RandomPortInitializerTest.MyTestConfiguration::class),
-        initializers = arrayOf(RandomPortInitializer::class))
+@ContextConfiguration(
+    classes = arrayOf(RandomPortInitializerTest.MyTestConfiguration::class),
+    initializers = arrayOf(RandomPortInitializer::class)
+)
 class RandomPortInitializerTest {
 
     @Value("\${random-port.port1}")
@@ -32,7 +34,7 @@ class RandomPortInitializerTest {
         assertThat(port1).isEqualTo(port2)
 
         assertThat(port3)
-                .isGreaterThan(0)
-                .isNotEqualTo(port1)
+            .isGreaterThan(0)
+            .isNotEqualTo(port1)
     }
 }
