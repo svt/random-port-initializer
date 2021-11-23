@@ -1,24 +1,16 @@
 plugins {
-
+    id "maven-publish"
     id "org.jetbrains.kotlin.jvm" version "1.4.10"
     id 'org.jmailen.kotlinter' version '3.2.0'
     id 'pl.allegro.tech.build.axion-release' version '1.10.2'
-    id "com.github.ben-manes.versions" version '0.20.0'
     id "java-library"
-    id "maven-publish"
-    id "signing"
+    id "se.svt.oss.gradle-yapp-publisher-plugin" version '0.1.13'
+    id "se.ascp.gradle.gradle-versions-filter"  version "0.1.8"
 }
 
-ext {
-    PUBLISH_GROUP_ID = 'se.svt.oss'
-    PUBLISH_VERSION = scmVersion.version
-    PUBLISH_ARTIFACT_ID = 'random-port-initializer'
-}
 
-group = PUBLISH_GROUP_ID
-project.version= PUBLISH_VERSION
-
-apply from: 'publishing.gradle'
+group = 'se.svt.oss'
+project.version = scmVersion.version
 
 repositories {
     mavenCentral()
@@ -28,7 +20,6 @@ test {
     useJUnitPlatform()
 }
 
-sourceCompatibility = 11
 
 compileKotlin {
     kotlinOptions {
@@ -52,8 +43,6 @@ task sourceJar(type: Jar) {
 task testJar(type: Jar, dependsOn: testClasses) {
     from sourceSets.test.output
 }
-
-publish.dependsOn check
 
 dependencies {
     api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.10'
