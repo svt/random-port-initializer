@@ -1,19 +1,22 @@
+
 # Random Port Initializer
 
-**Description**:  A Spring test util for resolving property placeholders to free random ports.
+![REUSE Compliance](https://img.shields.io/reuse/compliance/github.com/svt/random-port-initializer)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/janderssonse/random-port-initializer)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-  - **Technology stack**: Kotlin, Spring 5
-  - **Status**:  1.0
-  
-## Dependencies
+## What is it?
 
-Spring 5
+A Spring test util for resolving property placeholders to free random ports.
 
 ## Usage
 
-Add to build.gradle
-```
+Add to build.gradle.kts
+
+```console
+
 testCompile 'se.svt.oss:random-port-initializer:X.Y.Z
+
 ```
 
 When the RandomPortInitializer is applied to the application context, any property placeholders
@@ -21,7 +24,8 @@ starting with prefix ```random-port.``` will be resolved to a random free port. 
 property placeholder appears in multiple places, the same port will be assigned everywhere.
 
 Example on usage in test
-```
+
+```kotlin
 @ContextConfiguration(classes = arrayOf(MyTestConfiguration::class),
         initializers = arrayOf(RandomPortInitializer::class))
 class SomeIntegrationTest {
@@ -37,26 +41,26 @@ class SomeIntegrationTest {
 
 ## How to test the software
 
-```./gradlew test```
+```console
+./gradlew test
+```
 
-----
+## Getting help
 
-## Update version and release to jcenter/bintray (for maintainers)
+If you have questions, concerns, bug reports, etc, please file an issue in this repository's Issue Tracker.
 
-1. Make sure you are on master branch and that everything is pushed to master
-2. ./gradlew release to tag a new version (uses Axion release plugin - needs ssh key for repo)
-3.  ./gradlew bintrayUpload to upload to repo - needs BINTRAY_KEY and BINTRAY_USER environment variables
+## Getting involved
 
-
+General instructions for contributing [CONTRIBUTING](docs/CONTRIBUTING.adoc).
 
 ## License
 
+This software is released under the:
+
+[Apache License 2.0](LICENSE)
+
 Copyright 2018 Sveriges Television AB
 
-This software is released under the Apache 2.0 License.
+## Primary Maintainer
 
-## Primary Maintainers
-
-Gustav Grusell https://github.com/grusell
-
-----
+Gustav Grusell <https://github.com/grusell>
