@@ -6,7 +6,7 @@ plugins {
     id("org.jmailen.kotlinter") version "3.10.0"
     id("pl.allegro.tech.build.axion-release") version "1.13.7"
     id("se.svt.oss.gradle-yapp-publisher") version "0.1.18"
-    id("se.ascp.gradle.gradle-versions-filter")  version "0.1.16"
+    id("se.ascp.gradle.gradle-versions-filter") version "0.1.16"
 }
 
 group = "se.svt.oss"
@@ -45,6 +45,6 @@ dependencies {
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
     gradleVersion = "7.3.3"
-    //Same issue as described in link, with kotlin-reflect and 7.4.x. Will report
-    //https://github.com/ben-manes/gradle-versions-plugin/issues/471
+    // Same issue as described in link, with kotlin-reflect and 7.4.x. Will report
+    // https://github.com/ben-manes/gradle-versions-plugin/issues/471
 }
