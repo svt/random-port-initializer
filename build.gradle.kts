@@ -9,6 +9,9 @@ plugins {
     id("se.ascp.gradle.gradle-versions-filter") version "0.1.16"
 }
 
+scmVersion.tag.prefix = "release"
+scmVersion.tag.versionSeparator = "-"
+
 group = "se.svt.oss"
 project.version = scmVersion.version
 
