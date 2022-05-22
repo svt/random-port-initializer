@@ -33,7 +33,7 @@ kotlin {
 }
 
 dependencies {
-    api("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
+    api(kotlin("reflect"))
     api("org.springframework:spring-context:5.3.20")
 
     testImplementation("org.assertj:assertj-core:3.22.0")
@@ -44,7 +44,5 @@ dependencies {
 
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "7.3.3"
-    // Same issue as described in link, with kotlin-reflect and 7.4.x. Will report
-    // https://github.com/ben-manes/gradle-versions-plugin/issues/471
+    gradleVersion = "7.4.2"
 }
