@@ -4,10 +4,10 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## 1.0.6 - 2022-10-13
+## 1.0.6 - 2022-23-05
 
 ### Changed
-- Maintaince release - hygiene release, updated dependencies, docs
+- Maintaince release - hygiene release, updated dependencies, workflows, compliance
 
 ## 1.0.1 - 2019-10-13
 ### Changed
