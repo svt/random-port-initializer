@@ -3,7 +3,7 @@
 
 ![REUSE Compliance](https://img.shields.io/reuse/compliance/github.com/svt/random-port-initializer)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/svt/random-port-initializer)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
 ## What is it?
 
