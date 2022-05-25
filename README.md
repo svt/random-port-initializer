@@ -1,7 +1,7 @@
 
 # Random Port Initializer
 
-![REUSE Compliance](https://img.shields.io/reuse/compliance/github.com/svt/random-port-initializer)
+[![REUSE status](https://api.reuse.software/badge/github.com/svt/random-port-initializer)](https://api.reuse.software/info/github.com/svt/random-port-initializer)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/svt/random-port-initializer)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
