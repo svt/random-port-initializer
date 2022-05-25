@@ -5,6 +5,7 @@
 
 # User-specific stuff
 .idea
+report
 
 # CMake
 cmake-build-debug/
