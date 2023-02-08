@@ -4,11 +4,11 @@
 
 package se.svt.oss.randomportinitializer
 
+import me.alexpanov.net.FreePortFinder
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.core.env.PropertySource
 import org.springframework.core.env.StandardEnvironment
-import org.springframework.util.SocketUtils
 import java.util.concurrent.ConcurrentHashMap
 
 class RandomPortInitializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
@@ -32,10 +32,10 @@ class RandomPortPropertySource(name: String) : PropertySource<Any>(name) {
     val ports = ConcurrentHashMap<String, Int>()
 
     override fun getProperty(name: String): Any? {
-        if (! this.isRandomPortProperty(name)) {
+        if (!this.isRandomPortProperty(name)) {
             return null
         }
-        return ports.computeIfAbsent(name) { _ -> SocketUtils.findAvailableTcpPort() }
+        return ports.computeIfAbsent(name) { _ -> FreePortFinder.findFreeLocalPort() }
     }
 
     override fun containsProperty(name: String): Boolean {
