@@ -38,6 +38,7 @@ kotlin {
 dependencies {
     api(kotlin("reflect"))
     api("org.springframework:spring-context:5.3.20")
+    implementation("me.alexpanov:free-port-finder:1.1.1")
 
     testImplementation("org.assertj:assertj-core:3.22.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
